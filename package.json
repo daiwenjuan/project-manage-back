@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node debug app.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/daiwenjuan/project-manage-back#readme",
   "dependencies": {
+    "formidable": "^1.2.1",
     "koa": "^2.5.1",
+    "koa-body": "^4.0.1",
     "koa-bodyparser": "^4.2.1",
+    "koa-multer": "^1.0.2",
     "koa-router": "^7.4.0",
-    "nunjucks": "^3.1.3"
+    "node-xlsx": "^0.12.0",
+    "xlsx": "^0.13.0"
   }
 }
