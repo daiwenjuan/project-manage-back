@@ -12,10 +12,13 @@ let path = require('path')
 let fs = require('fs')
 
 router.get('/', async (ctx, next) => {
-  ctx.body = `<form action="http://127.0.0.1:3000/upload" method="post" enctype="multipart/form-data">  
-     <input type="file" name="file" value="选择文件"/>  
-     <input  type="submit"  value="上传"/>  
-</form>  `
+  ctx.body = `<div>
+        <a href="http://127.0.0.1:3000/public/uploads/1-2005_2018_5_2_16_28.xls">下载</a>
+        <form action="http://127.0.0.1:3000/upload" method="post" enctype="multipart/form-data">  
+             <input type="file" name="file" value="选择文件"/>  
+             <input  type="submit"  value="上传"/>  
+        </form>
+</div>  `
 })
 
 let ExcelParse = function (newPath) {
@@ -30,12 +33,11 @@ router.post('/upload', async (ctx, next) => {
   form.keepExtensions = true//保留后缀
   form.maxFieldsSize = 2 * 1024 * 1024
   form.parse(ctx.req, function (err, fields, files) {
-    if (err) {
+      if (err) {
       console.log('文件上传错误！')
       return
     }
     let filename = files.file.name
-
     // 对文件名进行处理，以应对上传同名文件的情况
     let nameArray = filename.split('.')
     let type = nameArray[nameArray.length - 1]
