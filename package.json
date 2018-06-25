@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node debug app.js"
+    "dev": "nodemon ./service/index.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,14 +18,25 @@
   },
   "homepage": "https://github.com/daiwenjuan/project-manage-back#readme",
   "dependencies": {
-    "formidable": "^1.2.1",
+    "ejs": "^2.6.1",
     "koa": "^2.5.1",
-    "koa-body": "^4.0.1",
-    "koa-bodyparser": "^4.2.1",
-    "koa-multer": "^1.0.2",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.1.4",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "webpack": "^4.12.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
     "koa-router": "^7.4.0",
-    "mysql": "^2.15.0",
-    "node-xlsx": "^0.12.0",
-    "xlsx": "^0.13.0"
+    "koa-webpack-dev-middleware": "^2.0.2",
+    "koa-webpack-hot-middleware": "^1.0.3",
+    "nodemon": "^1.17.5",
+    "webpack-cli": "^3.0.8"
   }
 }
