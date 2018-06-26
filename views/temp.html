@@ -8,6 +8,6 @@
     <base href="/client">
 </head>
 <body>
-<div id="root">&lt;%= process.env.root %&gt;</div>
-<script type="text/javascript" src="/main.js"></script></body>
+<div id="root"><%- htmlWebpackPlugin.options.root %></div>
+</body>
 </html>

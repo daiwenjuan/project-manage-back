@@ -1,18 +1,31 @@
 /**
  *  Created by daiwenjuan on 2018/6/26 上午10:27.
  */
-import Koa from 'koa'
-import React from 'react'
+const Koa = require('koa')
+const React = require('react')
 import { renderToString } from 'react-dom/server'
-import views from 'koa-views'
-import path from 'path'
+const views = require('koa-views')
+const path = require('path')
 import Demo from './app/main'
+const fs = require('fs')
 const app = new Koa()
 const webpack = require('webpack')
 const config = require('./webpack.config')
 const compiler = webpack(config)
 const devMiddleware = require('koa-webpack-dev-middleware')
 const hotMiddleware = require('koa-webpack-hot-middleware')
+compiler.plugin('emit', (compilation, callback) => {
+  const assets = compilation.assets
+  let file, data
+  Object.keys(assets).forEach(key => {
+    if (key.match(/\.html$/)) {
+      file = path.resolve(__dirname, key)
+      data = assets[key].source()
+      fs.writeFileSync(file, data)
+    }
+  })
+  callback()
+})
 app.use(devMiddleware(compiler))
 app.use(hotMiddleware(compiler))
 

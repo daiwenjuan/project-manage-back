@@ -4,6 +4,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -26,6 +27,19 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'root': JSON.stringify(process.env.root)
+      }
+    }),
+    new HtmlWebpackPlugin(
+      {
+        root: '<%= process.env.root %>',
+        template: './views/temp.html',
+        filename: './views/index.html'
+      }
+    ),
     new ProgressBarPlugin({ summary: false })
   ]
 }
