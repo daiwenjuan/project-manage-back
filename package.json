@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./service/index.js",
+    "dev": "nodemon index.js --watch server --watch build",
     "build": "webpack"
   },
   "repository": {
@@ -24,7 +24,7 @@
     "koa-views": "^6.1.4",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "webpack": "^4.12.1"
+    "webpack": "^3.5.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -37,6 +37,6 @@
     "koa-webpack-dev-middleware": "^2.0.2",
     "koa-webpack-hot-middleware": "^1.0.3",
     "nodemon": "^1.17.5",
-    "webpack-cli": "^3.0.8"
+    "progress-bar-webpack-plugin": "^1.11.0"
   }
 }

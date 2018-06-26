@@ -6,6 +6,6 @@ import React from 'react'
 export default class Home extends React.Component {
 
   render() {
-    return <div onClick={() => window.alert(123)}>hello world fgh</div>
+    return <div onClick={() => window.alert(4342234)}>hello world</div>
   }
 }

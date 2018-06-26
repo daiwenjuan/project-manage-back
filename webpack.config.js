@@ -3,7 +3,8 @@
  */
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+
 module.exports = {
   entry: {
     main: './app/index.js'
@@ -16,15 +17,15 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  mode: 'development',
   module: {
-    rules: [
+    loaders: [
       {
-        test: /\.js?$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
+        test: /\.jsx?$/,
+        loaders: ['babel-loader'],
       }
     ]
   },
-  plugins: []
+  plugins: [
+    new ProgressBarPlugin({ summary: false })
+  ]
 }
