@@ -3,11 +3,15 @@
  */
 import React from 'react'
 
-export default class App extends React.Component {
+class App extends React.Component {
 
-  render() {
+  render () {
+    let {children} = this.props
     return <div>
-      {this.props.children}
+      <div>dsfds</div>
+      {children}
     </div>
   }
 }
+
+module.exports = App

@@ -5,9 +5,9 @@ const Koa = require('koa')
 const Router = require('koa-router')
 const React = require('react')
 import { renderToString } from 'react-dom/server'
+
 const views = require('koa-views')
 const path = require('path')
-import Demo from './app/main'
 const fs = require('fs')
 const app = new Koa()
 const router = new Router()
@@ -16,7 +16,7 @@ const config = require('./webpack.config')
 const compiler = webpack(config)
 const devMiddleware = require('koa-webpack-dev-middleware')
 const hotMiddleware = require('koa-webpack-hot-middleware')
-const clientRoute = require('./servers/middlewares/clientRoute')
+import clientRoute from './servers/middlewares/clientRoute'
 
 compiler.plugin('emit', (compilation, callback) => {
   const assets = compilation.assets
@@ -36,7 +36,7 @@ app.use(hotMiddleware(compiler))
 // 将/public文件夹设置为静态路径
 app.use(require('koa-static')(__dirname + '/public'))
 // 将ejs设置为我们的模板引擎
-app.use(views(path.resolve(__dirname, './views'), { map: { html: 'ejs' } }))
+app.use(views(path.resolve(__dirname, './views'), {map: {html: 'ejs'}}))
 // response
 // router.get('*', async (ctx) => {
 //   let str = renderToString(<Demo />)

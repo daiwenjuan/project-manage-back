@@ -9,16 +9,19 @@ if (typeof require.ensure !== 'function') {
 }
 
 const routes = {
-  childRoutes: [{
-    path: '/',
-    component: require('./app'),
-    indexRoute: {
-      getComponent(nextState, callback) {
-        require.ensure([], require => {
-          callback(null, require('./main'))
-        })
-      }
-    },
-  }]
+  childRoutes: [
+    {
+      path: '/',
+      component: require('./app'),
+      indexRoute: {
+        getComponent (nextState, callback) {
+          require.ensure([], require => {
+            callback(null, require('./main'))
+          })
+        }
+      },
+      childRoutes: []
+    }
+  ]
 }
 export default routes
