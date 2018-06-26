@@ -4,8 +4,11 @@
 import React from 'react'
 
 export default class Home extends React.Component {
+  handleOnClick() {
+    this.props.actions.changeText()
+  }
 
   render() {
-    return <div onClick={() => window.alert(4)}>hello world</div>
+    return <div onClick={this.handleOnClick.bind(this)}>hello world {this.props.text} </div>
   }
 }
