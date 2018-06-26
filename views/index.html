@@ -9,5 +9,10 @@
 </head>
 <body>
 <div id="root">&lt;%= process.env.root %&gt;</div>
+<script>
+  window.config = {
+    REDUX_STATE: '<%= process.env.REDUX_STATE %>'
+  }
+</script>
 <script type="text/javascript" src="/main.js"></script><script type="text/javascript" src="/vendor.js"></script></body>
 </html>

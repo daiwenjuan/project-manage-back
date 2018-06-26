@@ -8,7 +8,7 @@ class App extends React.Component {
   render () {
     let {children} = this.props
     return <div>
-      <div>dsfds</div>
+      <div onClick={() => {alert(22)}}>dsfds</div>
       {children}
     </div>
   }

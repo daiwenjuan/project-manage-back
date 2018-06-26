@@ -3,8 +3,8 @@ import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 import { Provider } from 'react-redux'
 import routes from '../../app/routes'
-import store from '../../app/configureStore'
-
+import configureStore from '../../app/configureStore'
+const store = configureStore()
 export default async function clientRoute (ctx, next) {
   let _renderProps
 

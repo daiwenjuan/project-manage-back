@@ -4,5 +4,7 @@
 import { createStore } from 'redux'
 import myApp from './reducers'
 
-const store = createStore(myApp)
-module.exports = store
+export default function configureStore (preloadedState) {
+  return createStore(myApp, preloadedState)
+}
+

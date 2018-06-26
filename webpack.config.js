@@ -42,7 +42,7 @@ module.exports = {
     new HtmlWebpackPlugin(
       {
         root: '<%= process.env.root %>',
-        state:'<%= process.env.state %>',
+        REDUX_STATE: '<%= process.env.REDUX_STATE %>',
         template: './views/temp.html',
         filename: './views/index.html'
       }

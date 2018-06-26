@@ -9,5 +9,10 @@
 </head>
 <body>
 <div id="root"><%- htmlWebpackPlugin.options.root %></div>
+<script>
+  window.config = {
+    REDUX_STATE: '<%= htmlWebpackPlugin.options.REDUX_STATE %>'
+  }
+</script>
 </body>
 </html>
