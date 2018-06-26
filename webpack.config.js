@@ -8,7 +8,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: './app/index.js'
+    main: './app/index.js',
+    vendor: [
+      'react',
+      'react-dom',
+      'redux',
+      'react-redux',
+    ]
   },
   output: {
     filename: '[name].js',
