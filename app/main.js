@@ -4,11 +4,8 @@
 import React from 'react'
 
 export default class Home extends React.Component {
-  handleOnClick() {
-    this.props.actions.changeText()
-  }
 
   render() {
-    return <div onClick={this.handleOnClick.bind(this)}>hello world {this.props.text} </div>
+    return <div>hello world </div>
   }
 }

@@ -16,6 +16,8 @@ const config = require('./webpack.config')
 const compiler = webpack(config)
 const devMiddleware = require('koa-webpack-dev-middleware')
 const hotMiddleware = require('koa-webpack-hot-middleware')
+const clientRoute = require('./servers/middlewares/clientRoute')
+
 compiler.plugin('emit', (compilation, callback) => {
   const assets = compilation.assets
   let file, data
@@ -36,18 +38,19 @@ app.use(require('koa-static')(__dirname + '/public'))
 // 将ejs设置为我们的模板引擎
 app.use(views(path.resolve(__dirname, './views'), { map: { html: 'ejs' } }))
 // response
-router.get('*', async (ctx) => {
-  let str = renderToString(<Demo />)
-  await ctx.render('index', {
-    root: str
-  })
-})
+// router.get('*', async (ctx) => {
+//   let str = renderToString(<Demo />)
+//   await ctx.render('index', {
+//     root: str
+//   })
+// })
 // app.use(async ctx => {
 //   let str = renderToString(<Demo />)
 //   await ctx.render('index', {
 //     root: str
 //   })
 // })
+app.use(clientRoute)
 app.use(router.routes())
 app.use(router.allowedMethods())
 app.listen(3000)
