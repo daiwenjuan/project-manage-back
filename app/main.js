@@ -8,20 +8,20 @@ import actions from './actions'
 
 class Home extends React.Component {
 
-  render () {
+  render() {
     return <div>hello world </div>
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return state
 }
 
-function mapDispatchToProps (dispatch) {
-  return {actions: bindActionCreators(actions, dispatch)}
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(actions, dispatch) }
 }
 
-export default connect(
+module.exports = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Home)

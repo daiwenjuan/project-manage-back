@@ -9,26 +9,19 @@ if (typeof require.ensure !== 'function') {
 }
 
 const routes = {
-  path: '/',
-  component: require('./app'),
-  indexRoute: {
-    component: require('./main')
-  }
-
-
-  // childRoutes: [
-  //   {
-  //     path: '/',
-  //     component: require('./app'),
-  //     indexRoute: {
-  //       getComponent (nextState, callback) {
-  //         require.ensure([], require => {
-  //           callback(null, require('./main'))
-  //         })
-  //       }
-  //     },
-  //     childRoutes: []
-  //   }
-  // ]
+  childRoutes: [
+    {
+      path: '/',
+      component: require('./app'),
+      indexRoute: {
+        getComponent (nextState, callback) {
+          require.ensure([], require => {
+            callback(null, require('./main'))
+          })
+        }
+      },
+      childRoutes: []
+    }
+  ]
 }
 export default routes
