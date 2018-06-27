@@ -8,11 +8,9 @@
   <base href="/client">
 </head>
 <body>
-<div id="root">&lt;%= process.env.root %&gt;</div>
+<div id="root"><%- root %></div>
 <script>
-  window.config = {
-    REDUX_STATE: '<%= process.env.REDUX_STATE %>'
-  }
+  window.REDUX_STATE =<%- JSON.stringify(state) %>
 </script>
 <script type="text/javascript" src="/main.js"></script><script type="text/javascript" src="/vendor.js"></script></body>
 </html>

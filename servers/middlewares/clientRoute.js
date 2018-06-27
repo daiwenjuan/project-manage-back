@@ -5,12 +5,13 @@ import { Provider } from 'react-redux'
 import routes from '../../app/routes'
 import configureStore from '../../app/configureStore'
 const store = configureStore()
-export default async function clientRoute (ctx, next) {
+export default async function clientRoute(ctx, next) {
   let _renderProps
 
-  match({routes, location: ctx.url}, (error, redirectLocation, renderProps) => {
+  match({ routes, location: ctx.url }, (error, redirectLocation, renderProps) => {
     _renderProps = renderProps
   })
+
   if (_renderProps) {
     await ctx.render('index', {
       root: renderToString(
@@ -21,7 +22,6 @@ export default async function clientRoute (ctx, next) {
       state: store.getState()
     })
   } else {
-    console.log('==================')
     await next()
   }
 }

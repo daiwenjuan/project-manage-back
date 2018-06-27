@@ -5,11 +5,10 @@ import React from 'react'
 
 class App extends React.Component {
 
-  render () {
-    let {children} = this.props
+  render() {
     return <div>
       <div onClick={() => {alert(22)}}>dsfds</div>
-      {children}
+      {this.props.children}
     </div>
   }
 }

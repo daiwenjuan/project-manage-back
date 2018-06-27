@@ -8,11 +8,9 @@
   <base href="/client">
 </head>
 <body>
-<div id="root"><%- htmlWebpackPlugin.options.root %></div>
+<div id="root"><%- root %></div>
 <script>
-  window.config = {
-    REDUX_STATE: '<%= htmlWebpackPlugin.options.REDUX_STATE %>'
-  }
+  window.REDUX_STATE =<%- JSON.stringify(state) %>
 </script>
 </body>
 </html>

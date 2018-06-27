@@ -7,6 +7,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+  devtool: 'eval-source-map',
   entry: {
     main: './app/index.js',
     vendor: [
@@ -29,6 +30,9 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: ['babel-loader'],
+      }, {
+        test: /\.html$/,
+        loader: 'html-loader'
       }
     ]
   },
@@ -36,13 +40,10 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        'root': JSON.stringify(process.env.root)
       }
     }),
     new HtmlWebpackPlugin(
       {
-        root: '<%= process.env.root %>',
-        REDUX_STATE: '<%= process.env.REDUX_STATE %>',
         template: './views/temp.html',
         filename: './views/index.html'
       }

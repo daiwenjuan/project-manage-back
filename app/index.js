@@ -8,8 +8,8 @@ import { Provider } from 'react-redux'
 import routes from './routes'
 import configureStore from './configureStore'
 
-let store = configureStore(window.config.REDUX_STATE)
-match({history: browserHistory, routes}, (error, redirectLocation, renderProps) => {
+let store = configureStore(window.REDUX_STATE)
+match({ history: browserHistory, routes }, (error, redirectLocation, renderProps) => {
   render(
     <Provider store={store}>
       <Router {...renderProps}/>
