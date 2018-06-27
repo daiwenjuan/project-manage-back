@@ -11,7 +11,6 @@ class App extends Component {
   render() {
     const { children } = this.props
     return <div>
-      <div onClick={() => {alert(22)}}>dsfds</div>
       {children}
     </div>
   }

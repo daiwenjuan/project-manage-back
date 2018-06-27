@@ -7,9 +7,13 @@ import { connect } from 'react-redux'
 import actions from './actions'
 
 class Home extends React.Component {
+  handleOnClick = () => {
+    this.props.actions.changeText()
+  }
 
   render() {
-    return <div>hello world </div>
+    let { text } = this.props
+    return <div onClick={this.handleOnClick}>{text} </div>
   }
 }
 
