@@ -15,6 +15,7 @@ const compiler = webpack(config)
 const devMiddleware = require('koa-webpack-dev-middleware')
 const hotMiddleware = require('koa-webpack-hot-middleware')
 import clientRoute from './middlewares/clientRoute'
+import logger from 'koa-logger'
 
 compiler.plugin('emit', (compilation, callback) => {
   const assets = compilation.assets
@@ -28,6 +29,7 @@ compiler.plugin('emit', (compilation, callback) => {
   })
   callback()
 })
+app.use(logger())
 app.use(devMiddleware(compiler, {
   noInfo: false,
   publicPath: config.output.publicPath
