@@ -19,6 +19,7 @@
   "homepage": "https://github.com/daiwenjuan/project-manage-back#readme",
   "dependencies": {
     "antd": "^3.6.4",
+    "css-loader": "^0.28.11",
     "ejs": "^2.6.1",
     "koa": "^2.5.1",
     "koa-convert": "^1.2.0",
@@ -29,6 +30,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^3.0.0",
     "redux": "^4.0.0",
+    "style-loader": "^0.21.0",
     "webpack": "^3.5.5"
   },
   "devDependencies": {
@@ -45,15 +47,18 @@
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^2.30.1",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
     "koa-webpack-dev-middleware": "^2.0.2",
     "koa-webpack-hot-middleware": "^1.0.3",
+    "less-loader": "^4.1.0",
     "nodemon": "^1.17.5",
     "progress-bar-webpack-plugin": "^1.11.0",
     "react-hot-loader": "^4.3.3",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "webpack-merge": "^4.1.3"
   }
 }

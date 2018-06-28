@@ -4,16 +4,16 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Layout } from 'antd'
+const { Header, Content, Footer } = Layout
 import actions from '../actions/actions'
 
 class Home extends React.Component {
-  handleOnClick = () => {
-    this.props.actions.changeText()
-  }
 
   render() {
-    let { text } = this.props
-    return <div onClick={this.handleOnClick}>{text} </div>
+    return <Layout>
+      hello World
+    </Layout>
   }
 }
 

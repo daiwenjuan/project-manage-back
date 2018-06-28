@@ -29,10 +29,14 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
         loaders: ['babel-loader'],
       }, {
         test: /\.html$/,
         loader: 'html-loader'
+      }, {
+        test: /\.(less|css)$/,
+        loaders: ['style-loader', 'css-loader?modules', 'less-loader']
       }
     ]
   },
