@@ -19,7 +19,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public'),
     publicPath: '/'
   },
   resolve: {
@@ -45,7 +45,7 @@ module.exports = {
     new HtmlWebpackPlugin(
       {
         template: './views/temp.html',
-        filename: './views/index.html'
+        filename: '../views/index.html'
       }
     ),
     new ProgressBarPlugin({ summary: false })

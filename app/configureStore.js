@@ -2,9 +2,9 @@
  *  Created by daiwenjuan on 2018/6/26 下午6:20.
  */
 import { createStore } from 'redux'
-import myApp from './reducers'
+import reducers from './reducers/index'
 
-export default function configureStore (preloadedState) {
-  return createStore(myApp, preloadedState)
+export default function configureStore(preloadedState) {
+  return createStore(reducers, preloadedState)
 }
 

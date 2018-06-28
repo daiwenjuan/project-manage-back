@@ -10,11 +10,11 @@ const fs = require('fs')
 const app = new Koa()
 const router = new Router()
 const webpack = require('webpack')
-const config = require('./webpack.config')
+const config = require('./../webpack.config.js')
 const compiler = webpack(config)
 const devMiddleware = require('koa-webpack-dev-middleware')
 const hotMiddleware = require('koa-webpack-hot-middleware')
-import clientRoute from './servers/middlewares/clientRoute'
+import clientRoute from './middlewares/clientRoute'
 
 compiler.plugin('emit', (compilation, callback) => {
   const assets = compilation.assets
@@ -28,12 +28,15 @@ compiler.plugin('emit', (compilation, callback) => {
   })
   callback()
 })
-app.use(devMiddleware(compiler))
+app.use(devMiddleware(compiler, {
+  noInfo: false,
+  publicPath: config.output.publicPath
+}))
 app.use(hotMiddleware(compiler))
 // 将/public文件夹设置为静态路径
-app.use(require('koa-static')(__dirname + '/public'))
+app.use(require('koa-static')(path.resolve(__dirname + './public')))
 // 将ejs设置为我们的模板引擎
-app.use(views(path.resolve(__dirname, './views'), { map: { html: 'ejs' } }))
+app.use(views(path.resolve(__dirname, '../views'), { map: { html: 'ejs' } }))
 app.use(clientRoute)
 app.use(router.routes())
 app.use(router.allowedMethods())
