@@ -12,7 +12,7 @@ class Home extends React.Component {
 
   render() {
     return <Layout>
-      hello World
+      hello World sdf
     </Layout>
   }
 }

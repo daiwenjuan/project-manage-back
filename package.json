@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./servers/index.js",
-    "build": "webpack"
+    "build": "npm run clean && cross-env NODE_ENV=production webpack --config ./webpack.prod.js --progress",
+    "clean": "rimraf ./dist/client/* && rimraf ./dist/server/* && rimraf ./views/prod/*",
+    "test": "nodemon ./dist/server/server.js"
   },
   "repository": {
     "type": "git",
@@ -19,10 +21,15 @@
   "homepage": "https://github.com/daiwenjuan/project-manage-back#readme",
   "dependencies": {
     "antd": "^3.6.4",
+    "autoprefixer": "^8.6.4",
     "css-loader": "^0.28.11",
     "ejs": "^2.6.1",
     "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compress": "^3.0.0",
     "koa-convert": "^1.2.0",
+    "koa-json": "^2.0.2",
+    "koa-session": "^5.8.1",
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
     "react": "^15.3.1",
@@ -48,6 +55,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.2.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^2.30.1",
     "koa-logger": "^3.2.0",
