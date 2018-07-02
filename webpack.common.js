@@ -4,7 +4,6 @@
 const path = require('path')
 const webpack = require('webpack')
 
-
 const nodeEnv = process.env.NODE_ENV || 'development'
 
 module.exports = {
@@ -37,14 +36,27 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        use: 'babel-loader'
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }, {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2|jpeg)$/,
         use: ['file-loader?limit=1000&name=files/[md5:hash:base64:10].[ext]']
       },
       {
         test: /\.(less|css)$/,
-        use: ['style-loader', 'css-loader?modules', 'less-loader']
+        use: [
+          {
+            loader: 'style-loader' // creates style nodes from JS strings
+          }, {
+            loader: 'css-loader' // translates CSS into CommonJS
+          }, {
+            loader: 'less-loader' // compiles Less to CSS
+          }
+        ]
       },
       {
         test: /\.html$/,
